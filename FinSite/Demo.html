@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding:0;
+      box-sizing: border-box;
+    }
+
+    body {
+      
+      font-family: 'Roboto', sans-serif;
+
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: url('https://images.pexels.com/photos/13419437/pexels-photo-13419437.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+      transition: background 0.3s;
+    }
+
+.glass-container {
+  height: 60vh;
+  width: 90%;
+  max-width: 1000vw;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.glass-container h2 {
+  font-size: 2rem;
+  margin-bottom:20rem;
+  color: white;
+  text-align: center;
+  align-items:center;
+  justify-content:center;
+  top:0;
+}
+
+  
+.circle-container  {
+
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition: transform 1.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-container.flipped {
+  transform: rotateY(180deg);
+}
+
+.circle, .circle-back  {
+  width: 150px;
+  height: 150px;
+
+  margin: 0 auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem; 
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+.circle {
+  
+    background-color: rgba(195, 211, 216, 0.329);
+}
+
+.circle-back {
+    background-color: rgba(195, 211, 216, 0.329);
+  color: black;
+  transform: rotateY(180deg);
+
+}
+  
+
+.icon {
+  color:black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); 
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+
+  margin: 1rem 0.5rem;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: #2563eb;
+}
+
+.dot-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    gap: 10px;
+    
+  }
+
+  .new-section, .row {
+    gap:15px;
+  }
+  .dot {
+    
+    width: 15px;
+    height: 15px;
+    background-color: rgb(195, 211, 216);
+    border-radius: 50%;
+    animation: scroll 1.5s infinite ease-in-out;
+  }
+
+  .dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .dot:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  
+.new-section {
+  height: auto;
+  width: 100vw;
+  padding: 4rem 2rem;
+  text-align: center;
+ background: #fff; 
+}
+
+.new-section h2 {
+  font-size: 2.5rem;
+ 
+}
+
+.new-section p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+    .navbar-bottom {
+      z-index: 1000;
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height:65px;
+
+      background: #007bff;
+      border-radius: 40px 40px 0 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.2);
+      transition: transform 90.3s ease-in-out;
+    }
+
+    .navbar-bottom a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar-bottom a:hover {
+      color: #ffcc00;
+    }
+    .navbar-bottom a:active {
+      color: yellow;
+    }
+
+    .navbar-top {
+      
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      color: white;
+    }
+
+    .logo img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #9333ea;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .profile-menu {
+      position: relative;
+
+    }
+
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #9333ea;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background: white;
+
+      color: black;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: black;
+      transition: background 0.3s ease;
+    }
+
+    .dropdown a:hover {
+      background: #f0f0f0;
+    }
+
+    .dropdown .theme-toggle {
+      padding: 10px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .profile-menu:hover .dropdown {
+      display: block;
+    }
+  
+  .new-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .new-section p {
+      font-size: 1.2rem;
+      color: #333;
+    }
+  .wallet-icon {
+  display: block; 
+}
+
+.piggybank-icon {
+  display: none; 
+}
+
+.circle-container.flipped .wallet-icon {
+  display: none; /* Hide wallet icon when flipped */
+}
+
+.circle-container.flipped .piggybank-icon {
+  display: block;
+ color:black ;
+}
+.new-section .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    flex: 1 1 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      flex: 1 1 33%; /* This ensures that on medium screens and larger, the cards will be shown in 3 per row */
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .card {
+        
+      flex: 1 1 33%; /* This ensures that on large screens, the cards are evenly distributed */
+    }
+  }
+  
+ 
+
+  </style>
+</head>
+<body>
+
+  <div class="navbar-top">
+    <div class="logo">
+      <img src="./KB_Logo_2.png">
+    </div>
+    <div class="profile-menu">
+      <div class="profile-icon">J</div>
+      <div class="dropdown">
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+        <div class="theme-toggle">
+          <label for="dark-mode">Dark Mode</label>
+          <input type="checkbox" id="dark-mode">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+
+  <div class="navbar-bottom">
+    <a href="./Demo.html"><i class="fas fa-home"></i>Home</a>
+    <a href="./Articles.html"><i class="fas fa-pen"></i>Articles</a>
+    <a href="./BookingForm.html"><i class="fas fa-calendar"></i>Book</a>
+    
+  </div>
+
+ <div class="glass-container">
+  <div class="section">
+    <div class="flip-container" onclick="this.querySelector('.circle-container').classList.toggle('flipped')">
+      <div class="circle-container">
+        <div style="margin-top:6rem;" class="circle">
+          <h2 style="margin-top:6rem;">Financial Health</h2>
+          <div class="icon wallet-icon"> <i style="margin-right:rem;"class="fas fa-piggy-bank"></i></div>
+        </div>
+        <div style="margin-top:6rem;" class="circle-back" >
+          <h2 style="margin-top:6rem;">Smart Goals</h2>
+<div class="icon piggybank-icon"> <i style="margin-right:rem;color:black;"class="fas fa-wallet"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dot-container">
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+   <div class="button-container">
+      <button class="btn">Learn More</button>
+    </div>
+</div>
+</div>
+  </div>
+
+  <div class="new-section">
+    <h2>Latest Articles</h2>
+    <p>Explore our recent posts on personal finance.</p>
+    <div class="row">
+      <!-- Card 1 -->
+      <div class="col-md-4 col-lg-4 mb-4 g-4">
+        <div class="card" style="overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrjTT5XHwjTnJaDaFsJjy_EZF9mghvrZu-JctvEzORKffFs9HtnydjoT4&s=10" alt="Article Image" style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Article Title 1</h5>
+            <p class="card-text">This is a short description of the article to catch the readers' attention.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <br><br>
+      </div>
+        
+      <!-- Card 2 -->
+      <div class="col-md-4 col-lg-4 mb-4">
+        <div class="card" style="overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC0rd0TlHJoeSYKdTo8gfJA07HBYrZUZ5XFQ&usqp=CAU" alt="Article Image" style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Article Title 2</h5>
+            <p class="card-text">Learn more about financial strategies and tips to grow your wealth.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <br><br>
+      </div>
+
+      
+      
+    </div>
+    <br><br>
+   
+    <!--Dark & Light Mode Script-->
+  <script>
+    const darkModeToggle = document.getElementById('dark-mode');
+    darkModeToggle.addEventListener('change', () => {
+      document.body.style.background = darkModeToggle.checked ? '#121212' : "url('https://source.unsplash.com/1920x1080/?finance,abstract') no-repeat center center/cover";
+    });
+  </script>
+
+</body>
+</html>
