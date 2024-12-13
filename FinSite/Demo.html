@@ -16,7 +16,6 @@
     body {
       
       font-family: 'Roboto', sans-serif;
-
       height: auto;
       display: flex;
       flex-direction: column;
@@ -209,8 +208,11 @@
     .navbar-bottom a:hover {
       color: #ffcc00;
     }
-    .navbar-bottom a:active {
-      color: yellow;
+    .navbar-bottom a.active {
+      background-color: #ffcc00;
+      color: black;
+      border-radius: 5px;
+      padding: 5px 10px;
     }
 
     .navbar-top {
@@ -229,7 +231,7 @@
     }
 
     .logo img {
-      width: 55px;
+      width: 75px;
       height: 55px;
       border-radius: 50%;
       background: #9333ea;
@@ -247,10 +249,10 @@
     }
 
     .profile-icon {
-      width: 40px;
+      width: 80px;
       height: 40px;
-      border-radius: 50%;
-      background: #9333ea;
+      border-radius: 35px;
+      background: #007bff;
       color: white;
       display: flex;
       justify-content: center;
@@ -265,12 +267,19 @@
       top: 50px;
       right: 0;
       background: white;
-
       color: black;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       overflow: hidden;
       z-index: 1000;
+    }
+
+    .bottom {
+      margin-left: -25px;
+      padding: 0;
+      width: 100vw;
+      background:rgba(0, 0, 0, 0.8) ;
+      color: whitesmoke;
     }
 
     .dropdown a {
@@ -315,7 +324,7 @@
 }
 
 .circle-container.flipped .wallet-icon {
-  display: none; /* Hide wallet icon when flipped */
+  display: none; 
 }
 
 .circle-container.flipped .piggybank-icon {
@@ -334,14 +343,14 @@
   
   @media (max-width: 768px) {
     .card {
-      flex: 1 1 33%; /* This ensures that on medium screens and larger, the cards will be shown in 3 per row */
+      flex: 1 1 33%; 
     }
   }
   
   @media (max-width: 992px) {
     .card {
         
-      flex: 1 1 33%; /* This ensures that on large screens, the cards are evenly distributed */
+      flex: 1 1 33%; 
     }
   }
   
@@ -353,28 +362,19 @@
 
   <div class="navbar-top">
     <div class="logo">
-      <img src="./KB_Logo_2.png">
+      <img src="./KEAMO BABE blk.png">
     </div>
-    <div class="profile-menu">
-      <div class="profile-icon">J</div>
-      <div class="dropdown">
-        <a href="#">Profile</a>
-        <a href="#">Settings</a>
-        <div class="theme-toggle">
-          <label for="dark-mode">Dark Mode</label>
-          <input type="checkbox" id="dark-mode">
 
-        </div>
-      </div>
-    </div>
+    <a href="./form.html"> <div class="profile-icon">Book!</div></a>
+     
   </div>
   <br><br><br><br>
 
   <div class="navbar-bottom">
-    <a href="./Demo.html"><i class="fas fa-home"></i>Home</a>
-    <a href="./Articles.html"><i class="fas fa-pen"></i>Articles</a>
-    <a href="./form.html"><i class="fas fa-calendar"></i>Book</a>
-    
+    <a href="./Demo.html"><i class="fas fa-home"></i> Home</a>
+    <a href="./Articles.html"><i class="fas fa-book"></i> Articles</a>
+    <a href="./blank.html"><i class="fas fa-pen"></i> About</a>
+    <a href="./form.html"><i class="fas fa-calendar"></i> Book</a>
   </div>
 
  <div class="glass-container">
@@ -399,7 +399,7 @@
   </div>
 
    <div class="button-container">
-      <button class="btn">Learn More</button>
+    <a href="./billsplit.html" class="btn btn-learn-more">Learn More</a>
     </div>
 </div>
 </div>
@@ -438,15 +438,38 @@
       
       
     </div>
-    <br><br>
-   
-    <!--Dark & Light Mode Script-->
-  <script>
-    const darkModeToggle = document.getElementById('dark-mode');
-    darkModeToggle.addEventListener('change', () => {
-      document.body.style.background = darkModeToggle.checked ? '#121212' : "url('https://source.unsplash.com/1920x1080/?finance,abstract') no-repeat center center/cover";
+    <footer>
+      <div style="text-align: center; padding-bottom:70px;" class="bottom">
+        <div class="qr-code">
+          <img style="margin-top: 5px;" src="./keamo_QR.png" alt="QR_Code">
+          <p>Scan/Screenshot QR Code To Share OR Visit!</p>
+        </div>
+          <h4>Contact Us OR Click Book Button Above!</h4>
+          <i  style="font-size:30px;" class="fa-solid fa-at"></i>
+          <p style="margin-bottom:8px;color:#fff">Email:******@gmail.com</p>
+          <a href="#"><i style="font-size:30px;" class="fa-brands fa-whatsapp"></i></a>
+          <p style="margin-bottom:8px;color:#fff">WhatApp:0**-***-****</p>
+          <a href="#"> <i style="font-size:30px" class=" social fa-brands fa-facebook"></i></a>
+     
+      </div>
+    </footer>
+    <script>
+
+      
+    // navbar links
+    const links = document.querySelectorAll('.navbar-bottom a');
+  
+    //  current page's URL path
+    const currentPath = window.location.pathname;
+  
+    // 'active' class to the matching link
+    links.forEach(link => {
+      if (link.href.includes(currentPath)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
     });
   </script>
-
 </body>
 </html>

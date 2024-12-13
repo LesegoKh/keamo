@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Splitter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+      
+          body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background:none;
+            transition: background 0.3s;
+          }
+      
+          .navbar-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+          }
+      
+          .navbar-top .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+          }
+      
+          .profile-menu {
+            position: relative;
+          }
+      
+          .profile-icon {
+            width: 80px;
+            height: 40px;
+            border-radius: 35px;
+            background: #007bff;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+          }
+          .dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  color: black;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  transition: background 0.3s ease;
+}
+
+.dropdown a:hover {
+  background: #f0f0f0;
+}
+
+.profile-menu:hover .dropdown {
+  display: block;
+}
+            .logo img {
+              width: 75px;
+              height: 55px;
+              border-radius: 50%;
+              background: #9333ea;
+              color: white;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-weight: bold;
+              cursor: pointer;
+            }
+            footer {
+              width: 100vw;
+              background:rgba(0, 0, 0, 0.8) ;
+              color: #fff;
+            }
+      
+          .navbar-bottom {
+            z-index: 1000;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 65px;
+            background: #007bff;
+            border-radius: 40px 40px 0 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+          }
+      
+          .navbar-bottom a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+          }
+      
+          .navbar-bottom a:hover {
+            color: #ffcc00;
+          }
+          .navbar-bottom a.active {
+            background-color: #ffcc00;
+            color: black;
+            border-radius: 5px;
+            padding: 5px 10px;
+          }
+          
+          .glass-container {
+            margin-top: 120px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+          }
+      
+          h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+          }
+      
+          form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
+          }
+      
+          label {
+            font-weight: bold;
+          }
+      
+          input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+          }
+      
+          button {
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+          }
+          .glass-container {
+            margin-top: 120px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+          }
+      
+          button:hover {
+            background: #0056b3;
+          }
+      
+          .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 1rem;
+          }
+      
+          .time-slot {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+          }
+      
+          .time-slot.selected {
+            background: #ffcc00;
+            color: black;
+          }
+      
+          .time-slot:hover {
+            background: #0056b3;
+          }
+    
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+        .animated-count {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .highlight {
+            color: #1abc9c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Top -->
+  <div class="navbar-top">
+    <div class="logo">
+        <div class="dropdown">
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+            <a href="#">Logout</a>
+          </div>
+      <img src="./KEAMO BABE blk.png">
+    </div>
+    <a href="./form.html"> <div class="profile-icon">Book!</div></a>
+
+  </div>
+
+    <div class=" glass-container container mt-5">
+        <h1 style="padding-top: 50px;" class="text-center mb-4">Bill Splitter with Tip</h1>
+        <img style="border-radius: 50px; margin-top: 8px;height:180px;width:180px;" src="./KEAMO BABE (1).png" alt="Logo">
+        <br><a href="./DebtCal.html"> <div class="btn btn-primary">Debt Tool!</div></a>
+        <form id="billForm">
+            <div class="mb-3">
+                <label for="billAmount" class="form-label">Bill Amount (ZAR):</label>
+                <input type="number" class="form-control" id="billAmount" placeholder="Enter total bill amount" required>
+            </div>
+            <div class="mb-3">
+                <label for="tipPercentage" class="form-label">Tip Percentage (%):</label>
+                <input type="number" class="form-control" id="tipPercentage" placeholder="Enter tip percentage" required>
+            </div>
+            <div id="userContainer" class="mb-3">
+                <label class="form-label">User Names:</label>
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control user-name" placeholder="Enter user name" required>
+                    <button type="button" class="btn btn-outline-secondary add-user">Add User</button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Calculate Split</button>
+        </form>
+
+        <div class="mt-5">
+            <h2 class="text-center">Split Summary</h2>
+            <div id="progressBars" class="mb-4"></div>
+
+            <div id="splitTableContainer" class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Amount Owed (ZAR)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="splitTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="text-center">
+                <h3>Total Amount: <span id="totalAmount" class="animated-count">0</span> ZAR</h3>
+                <h4>Tip Amount: <span id="tipAmount" class="animated-count">0</span> ZAR</h4>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-bottom">
+        <a href="./Demo.html"><i class="fas fa-home"></i> Home</a>
+        <a href="./Articles.html"><i class="fas fa-book"></i> Articles</a>
+        <a href="./blank.html"><i class="fas fa-pen"></i> About</a>
+        <a href="./form.html"><i class="fas fa-calendar"></i> Book</a>
+      </div>
+    <!-- Navbar Bottom Ends here-->
+      
+    <footer>
+      <div style="text-align: center; padding-bottom:70px;" class="bottom">
+        <div class="qr-code">
+          <img style="margin-top: 5px;"  src="./keamo_QR.png" alt="QR_Code">
+          <p>Scan/Screenshot QR Code To Share OR Visit!</p>
+        </div>
+          <h4>Contact Us OR Click Book Button Above!</h4>
+          <i  style="font-size:30px;" class="fa-solid fa-at"></i>
+          <p style="margin-bottom: 8px;">Email:******@gmail.com</p>
+          <a href="#"><i style="font-size:30px;" class="fa-brands fa-whatsapp"></i></a>
+          <p style="margin-bottom: 8px;">WhatApp:0**-***-****</p>
+          <a href="#"> <i style="font-size:30px" class=" social fa-brands fa-facebook"></i></a>
+     
+      </div>
+    </footer>
+
+    <script>
+        const billForm = document.getElementById('billForm');
+        const userContainer = document.getElementById('userContainer');
+        const progressBars = document.getElementById('progressBars');
+        const splitTableBody = document.getElementById('splitTableBody');
+        const totalAmountElement = document.getElementById('totalAmount');
+        const tipAmountElement = document.getElementById('tipAmount');
+
+        const animateCount = (element, target) => {
+            let current = 0;
+            const increment = Math.ceil(target / 100);
+
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(counter);
+                }
+                element.textContent = current.toLocaleString('en-ZA');
+            }, 10);
+        };
+
+        const animateProgressBar = (bar, percentage) => {
+            setTimeout(() => {
+                bar.style.width = `${percentage}%`;
+                bar.textContent = `${percentage}%`;
+            }, 200);
+        };
+
+        document.querySelector('.add-user').addEventListener('click', () => {
+            const newInput = document.createElement('div');
+            newInput.className = 'input-group mb-2';
+            newInput.innerHTML = `
+                <input type="text" class="form-control user-name" placeholder="Enter user name" required>
+                <button type="button" class="btn btn-outline-danger remove-user">Remove</button>
+            `;
+            userContainer.appendChild(newInput);
+
+            newInput.querySelector('.remove-user').addEventListener('click', () => {
+                newInput.remove();
+            });
+        });
+
+        billForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const billAmount = parseFloat(document.getElementById('billAmount').value);
+            const tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+            const userNames = Array.from(document.querySelectorAll('.user-name')).map(input => input.value.trim()).filter(name => name);
+
+            if (userNames.length < 2) {
+                alert('Please add at least 2 users.');
+                return;
+            }
+
+            const tipAmount = (billAmount * tipPercentage) / 100;
+            const totalAmount = billAmount + tipAmount;
+            const splitAmount = totalAmount / userNames.length;
+
+            // Animate totals
+            animateCount(totalAmountElement, totalAmount);
+            animateCount(tipAmountElement, tipAmount);
+
+            // progress bars
+            progressBars.innerHTML = '';
+            userNames.forEach((name, index) => {
+                const progressBarContainer = document.createElement('div');
+                progressBarContainer.className = 'mb-3';
+                progressBarContainer.innerHTML = `
+                    <label>${name}</label>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                `;
+                progressBars.appendChild(progressBarContainer);
+
+                const progressBar = progressBarContainer.querySelector('.progress-bar');
+                const percentage = ((splitAmount / totalAmount) * 100).toFixed(1);
+                animateProgressBar(progressBar, percentage);
+            });
+
+            // Update table
+            splitTableBody.innerHTML = '';
+            userNames.forEach((name) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${name}</td>
+                    <td class="highlight">ZAR ${splitAmount.toFixed(2)}</td>
+                `;
+                splitTableBody.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>

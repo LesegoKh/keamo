@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KeamoFin Booking Page</title>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -48,10 +48,10 @@
     }
 
     .profile-icon {
-      width: 40px;
+      width: 80px;
       height: 40px;
-      border-radius: 50%;
-      background: #9333ea;
+      border-radius: 35px;
+      background: #007bff;
       color: white;
       display: flex;
       justify-content: center;
@@ -60,7 +60,7 @@
       cursor: pointer;
     }
       .logo img {
-        width: 55px;
+        width: 75px;
         height: 55px;
         border-radius: 50%;
         background: #9333ea;
@@ -71,6 +71,12 @@
         font-weight: bold;
         cursor: pointer;
       }
+      footer {
+        width: 100vw;
+        background:rgba(0, 0, 0, 0.8) ;
+        color: #fff;
+      }
+
     .navbar-bottom {
       z-index: 1000;
       position: fixed;
@@ -97,7 +103,13 @@
     .navbar-bottom a:hover {
       color: #ffcc00;
     }
-
+    .navbar-bottom a.active {
+      background-color: #ffcc00;
+      color: black;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+    
     .glass-container {
       margin-top: 120px;
       background: rgba(255, 255, 255, 0.8);
@@ -178,17 +190,18 @@
   <!-- Navbar Top -->
   <div class="navbar-top">
     <div class="logo">
-      <img src="./KB_Logo_2.png">
+      <img src="./KEAMO BABE blk.png">
     </div>
-    <div class="profile-menu">
-      <div class="profile-icon">P</div>
-    </div>
+    <a href="./form.html"> <div class="profile-icon">Book!</div></a>
+
   </div>
-  
+
 
   <!-- Booking Form -->
   <div class="glass-container">
     <h2>Book an Appointment<br>with us!</h2>
+    <img style="border-radius: 50px; margin-top: 8px;height:180px;width:180px;" src="./KEAMO BABE (1).png" alt="Logo">
+  
     <form 
     action="https://formsubmit.co/lskyllz64@gmail.com" 
     method="POST" netlify-honeypot="bot-field">
@@ -216,17 +229,47 @@
 
       <button type="submit">Book Now</button>
     </form>
-    <div id="loading-message">Loading...</div>
-  </div>
-  <div id="loading-indicator" style="display: none;">Loading...</div>
+      </div>
+  
   <!-- Navbar Bottom -->
   <div class="navbar-bottom">
     <a href="./Demo.html"><i class="fas fa-home"></i> Home</a>
-    <a href="./Articles.html"><i class="fas fa-pen"></i> Articles</a>
+    <a href="./Articles.html"><i class="fas fa-book"></i> Articles</a>
+    <a href="./blank.html"><i class="fas fa-pen"></i> About</a>
     <a href="./form.html"><i class="fas fa-calendar"></i> Book</a>
   </div>
 <!-- Navbar Bottom Ends here-->
   
+<footer>
+  <div style="text-align: center; padding-bottom:70px;" class="bottom">
+    <div class="qr-code">
+      <img style="margin-top: 5px;"  src="./keamo_QR.png" alt="QR_Code">
+      <p>Scan/Screenshot QR Code To Share OR Visit!</p>
+    </div>
+      <h4>Contact Us OR Click Book Button Above!</h4>
+      <i  style="font-size:30px;" class="fa-solid fa-at"></i>
+      <p style="margin-bottom: 8px;">Email:******@gmail.com</p>
+      <a href="#"><i style="font-size:30px;" class="fa-brands fa-whatsapp"></i></a>
+      <p style="margin-bottom: 8px;">WhatApp:0**-***-****</p>
+      <a href="#"> <i style="font-size:30px" class=" social fa-brands fa-facebook"></i></a>
  
+  </div>
+</footer>
+<script>
+    // navbar links
+    const links = document.querySelectorAll('.navbar-bottom a');
+  
+    // current page's URL path
+    const currentPath = window.location.pathname;
+  
+    // 'active' class to the matching link
+    links.forEach(link => {
+      if (link.href.includes(currentPath)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  </script>
   </body>
   </html>

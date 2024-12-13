@@ -5,23 +5,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Videos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="styles.css"> <!-- Link external CSS file if styles are extracted -->
-  <style>
+   <style>
     /* Global Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  padding-top: 120px;
+  font-family: 'Roboto', sans-serif;
+  background: none;
+  transition: background 0.3s;
+}
 
+.btn {
+  display: inline-block;
+  margin: 1rem 0.5rem;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: #2563eb;
+}
+
+/* Story Section */
+.story-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  background: #f9f9f9;
+}
+
+.story-section img {
+  width: 45%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.story-text {
+  width: 50%;
+  padding-left: 20px;
+}
+
+.story-text h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.story-text p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Animated Section */
+.animated-section {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  background: #e8f4fc;
+  flex-direction: row-reverse;
+}
+
+.services {
+  height: auto;
+  width: 100vw;
+  text-align: center;
+
+}
+.animated-section .animated-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+span {
+    font-size: 18px;
+    font-weight: 800;
+}
+.animated-section img {
+  max-width: 100%;
+  border-radius: 10px;
+  position: relative;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.animated-section:hover img {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.animated-section .text-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.animated-section h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.animated-section p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .story-section, .animated-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .story-section img, .animated-section img {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .story-text, .text-content {
+    width: 100%;
+    padding: 0;
+  }
+}
 body {
   font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url('https://images.pexels.com/photos/13419437/pexels-photo-13419437.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+  background: none;
   transition: background 0.3s;
+}
+.glass-container {
+  height: 100vh;
+  width: 90%;
+  max-width: 1000vw;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 /* Navbar Top */
@@ -39,6 +184,19 @@ body {
   color: white;
 }
 
+.logo img {
+  width: 75px;
+  height: 55px;
+  border-radius: 50%;
+  background: #9333ea;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .navbar-top .logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -50,10 +208,10 @@ body {
 }
 
 .profile-icon {
-  width: 40px;
+  width: 80px;
   height: 40px;
-  border-radius: 50%;
-  background: #9333ea;
+  border-radius: 30px;
+  background: #2563eb;
   color: white;
   display: flex;
   justify-content: center;
@@ -74,7 +232,9 @@ body {
   overflow: hidden;
   z-index: 1000;
 }
-
+.services img {
+  transform: scale(1.1);
+}
 .dropdown a {
   display: block;
   padding: 10px;
@@ -114,39 +274,125 @@ body {
   text-decoration: none;
   font-weight: bold;
 }
+.navbar-bottom a.active {
+  background-color: #ffcc00;
+  color: black;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
 
 .navbar-bottom a:hover {
   color: #ffcc00;
 }
-
+footer {
+  width: 100vw;
+  background:rgba(0, 0, 0, 0.8) ;
+  color: #fff;
+}
   </style>
 </head>
 <body>
   <!-- Navbar Top -->
   <div class="navbar-top">
-    <div class="logo">My Website</div>
+    <div class="logo">
+      <img src="./KEAMO BABE blk.png">
+    </div>
     <div class="profile-menu">
-      <div class="profile-icon">P</div>
-      <div class="dropdown">
-        <a href="#">Profile</a>
-        <a href="#">Settings</a>
-        <a href="#">Logout</a>
+      
+      <a href="./form.html"><div class="profile-icon">Book!</div></a>
       </div>
     </div>
   </div>
 
   <!-- Main Content -->
-  <div class="glass-container">
-    <h2>Videos Page</h2>
-    <p>Welcome to the videos section! Here you'll find a collection of engaging content.</p>
-    <!-- elements here -->
+<!-- Story Section -->
+<h2>About Us</h2>
+<section class="story-section">
+  <img src="https://media.istockphoto.com/id/629600760/photo/portrait-of-female-doctor-working-in-office.jpg?s=1024x1024&w=is&k=20&c=QVSSfMW4YN_BX6gYyxUoHWPSe4ZFumfwztWa-PgIK-4=" alt="Financial Planner">
+  <div class="story-text">
+<h3>Keamo Babe - Certified Financial Coach</h3>
+    <p>Meet Keamo Babe, a seasoned financial expert with years of experience helping individuals and families achieve their financial goals. Her passion for personalized strategies and proven success makes her a trusted advisor in the industry.</p>
+   <a href="#"> <i style="margin-right: 12px;font-size:30px" class=" social fa-brands fa-facebook"></i></a>
+   <a href="#"><i style="margin-right: 12px;font-size:30px;" class="fa-brands fa-whatsapp"></i></a>
+   <a href="#"><i style="margin-right: 12px;font-size:30px;" class="fa-solid fa-at"></i></a>
   </div>
+ 
+</section>
 
+<section style="text-align: center; font-size:24px;" class="services">
+  <img style="border-radius: 50px; margin-top: 8px;height:200px;width:200px;" src="./KEAMO BABE (1).png" alt="Logo">
+  <div class="services-text">
+    <h4>Services We Offer:</h4><br>
+    <ul style="margin-bottom: 8px;">
+      <li>Personal Financial Management</li><br>
+      <li>Financial Goal Setting</li><br>
+      <li>Budget Development</li><br>
+      <li>Debt management </li><br>
+      <li >Savings Plans</li>
+    </ul>
+  </div>
+</section>
+<!-- Animated Section -->
+<section class="animated-section">
+  <div class="animated-image">
+    <img src="https://images.pexels.com/photos/8560845/pexels-photo-8560845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sliding Animation">
+  </div>
+  <div style="text-align: center;" class="text-content">
+    
+    <p>Living without financial security can be one of the most exhausting experiences. - As it consumes your thoughts, affects your health & limits your ability to plan for the future.<br>
+      <br>
+      A financial coach can help lift this burden, guiding you toward better decisions, smarter investments & a strategy that turns stress into financial freedom <br><br>
+      <span>- Keamo Babe, Financial Coach</span></p>
+  </div>
+</section>
+
+<section class="animated-section">
+  <div class="text-content">
+    <h3 style="margin-left: 20px;">Personalized Solutions</h3>
+    <p style="margin-left: 20px;">Discover innovative approaches that align with your unique financial needs, designed to maximize your opportunities and secure lasting success.</p>
+  </div>
+  <div class="animated-image">
+    <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sliding Animation">
+  </div>
+</section>
   <!-- Navbar Bottom -->
   <div class="navbar-bottom">
-    <a href="home.html"><i class="fas fa-home"></i> Home</a>
-    <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
-    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="./Demo.html"><i class="fas fa-home"></i> Home</a>
+    <a href="./Articles.html"><i class="fas fa-book"></i> Articles</a>
+    <a href="./blank.html"><i class="fas fa-pen"></i> About</a>
+    <a href="./form.html"><i class="fas fa-calendar"></i> Book</a>
   </div>
+  <footer>
+    <div style="text-align: center; padding-bottom:70px;" class="bottom">
+      <div class="qr-code">
+        <img style="margin-top: 5px;"  src="./keamo_QR.png" alt="QR_Code">
+        <p>Scan/Screenshot QR Code To Share OR Visit!</p>
+      </div>
+        <h4>Contact Us OR Click Book Button Above!</h4>
+        <i  style="font-size:30px;" class="fa-solid fa-at"></i>
+        <p style="margin-bottom: 8px;">Email:******@gmail.com</p>
+        <a href="#"><i style="font-size:30px;" class="fa-brands fa-whatsapp"></i></a>
+        <p style="margin-bottom: 8px;">WhatApp:0**-***-****</p>
+        <a href="#"> <i style="font-size:30px" class=" social fa-brands fa-facebook"></i></a>
+   
+    </div>
+  </footer>
+  <script>
+    // navbar links
+    const links = document.querySelectorAll('.navbar-bottom a');
+  
+    //  current page's URL path
+    const currentPath = window.location.pathname;
+  
+    // 'active' class to the matching link
+    links.forEach(link => {
+      if (link.href.includes(currentPath)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  </script>
+  
 </body>
 </html>
